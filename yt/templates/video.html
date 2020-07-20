@@ -1,0 +1,113 @@
+{% extends 'index.html' %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-4">
+                <div class="thumbnail cover">
+                    <a href="javascript:void(0);">
+                        <img src="{{ info.thumbnail_url }}" class="img-fluid img-thumbnail"
+                             alt="Youtube downloader thumbnail"/>
+                    </a>
+                    <div class="caption text-left">
+                        <b>{{ info.title }}</b>
+                        <p class="m-b-0 m-t">Duration: {{ info.length }}</p>
+                    </div>
+                    <div>
+                        <a type="button" target="_blank" class="btn btn-danger"
+                           href="https://audioconverter.co/mp3-converter">
+                            <i class="fa fa-wrench" aria-hidden="true"></i>&nbsp; Covert to MP3
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-8">
+                <!-- Bootstrap CSS -->
+                <!-- jQuery first, then Bootstrap JS. -->
+                <!-- Nav tabs -->
+
+                <ul class="nav nav-tabs" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#videos" role="tab" data-toggle="tab">videos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#audios" role="tab" data-toggle="tab">audios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#captions" role="tab" data-toggle="tab">captions</a>
+                    </li>
+                </ul>
+
+                <!-- Tab panes -->
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane in active" id="videos">
+                        <table class="table table-striped table-hover">
+                            <thead>
+                            <tr>
+                                <th>Resolution</th>
+                                <th>FileSize</th>
+                                <th>Download</th>
+                            </tr>
+                            </thead>
+                            {% for video in info.videos %}
+                                <tr>
+                                    <td>{{ video.resolution }}({{ video.mime_type }})</td>
+                                    <td>{{ video.filesize|filesizeformat }}</td>
+                                    <td>
+                                        <a type="button" class="btn btn-success"
+                                           download="{{ video.default_filename }}"
+                                           href="{{ video.url }}">
+                                            <i class="fa fa-download" aria-hidden="true"></i>&nbsp; Download</a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade" id="audios">
+                        <table class="table table-striped table-hover">
+                            <thead>
+                            <tr>
+                                <th>Resolution</th>
+                                <th>FileSize</th>
+                                <th>Download</th>
+                            </tr>
+                            </thead>
+                            {% for audio in info.audios %}
+                                <tr>
+                                    <td>{{ audio.abr }}({{ audio.mime_type }})</td>
+                                    <td>{{ audio.filesize|filesizeformat }}</td>
+                                    <td>
+                                        <a type="button" class="btn btn-success"
+                                           download="{{ audio.default_filename }}"
+                                           href="{{ audio.url }}">
+                                            <i class="fa fa-download" aria-hidden="true"></i>&nbsp; Download</a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade" id="captions">
+                        <table class="table table-striped table-hover">
+                            <thead>
+                            <tr>
+                                <th>Language</th>
+                                <th>Download</th>
+                            </tr>
+                            </thead>
+                            {% for caption in info.captions %}
+                                <tr>
+                                    <td>{{ caption.name }}</td>
+                                    <td>
+                                        <a name='caption-download' type="button" class="btn btn-success"
+                                           href="/caption_to_srt?caption_url={{ caption.url|urlencode }}">
+                                            <i class="fa fa-download" aria-hidden="true"></i>&nbsp; Download</a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
