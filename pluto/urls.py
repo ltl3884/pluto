@@ -22,9 +22,5 @@ from yt import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name='index'),
-    path('caption_to_srt/', views.caption_to_srt, name='caption_to_srt')
-]
-
-urlpatterns += i18n_patterns(
     path('yt/', include('yt.urls'))
-)
+]

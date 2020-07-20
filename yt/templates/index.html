@@ -2,7 +2,6 @@
 <html>
 {% load static %}
 {% load bootstrap4 %}
-{% load i18n %}
 
 {% bootstrap_css %}
 {% bootstrap_javascript jquery='full' %}
@@ -12,7 +11,6 @@
 <body>
 
 {% include 'nav.html' %}
-{% get_current_language as LANGUAGE_CODE %}
 <main role="main">
 
     <!-- Main jumbotron for a primary marketing message or call to action -->
@@ -20,13 +18,13 @@
         <div class="container">
             <div class="row">
                 <div class="col">
-                    <h5 class="text-left display-4">{% trans 'youtube downloader' %}</h5>
+                    <h5 class="text-left display-4">youtube downloader</h5>
                 </div>
             </div>
             <div class="row">
                 <div class="col">
                     <h5 class="text-left display-5">
-                        {% trans 'Download YouTube videos in any quality and formats' %}
+                        Download YouTube videos in any quality and formats
                     </h5>
                 </div>
             </div>
@@ -47,7 +45,7 @@
                         </div>
                     {% endif %}
 
-                    <form action="/{{ LANGUAGE_CODE }}/yt/download" method="post" class="form-inline">
+                    <form action="/yt/download" method="post" class="form-inline">
                         <div class="container">
                             {% csrf_token %}
                             <div class="row">
@@ -55,7 +53,7 @@
                                     <div class="input-group-prepend">
                                         <i class="fa fa-link fa-2x fa-fw" aria-hidden="true"></i>
                                     </div>
-                                    <input type="text" name="url" class="form-control" placeholder="paste url here" value="{{ url }}">
+                                    <input type="text" name="url" class="form-control" placeholder="insert a valid url here" value="{{ url }}">
                                 </div>
                                 <div class="col-4 form-group">
                                     <button class="btn btn-success" type="submit">start</button>
