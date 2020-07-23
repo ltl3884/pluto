@@ -32,3 +32,24 @@ def caption_to_srt(request):
     response['Content-Disposition'] = 'attachment; filename="caption.srt"'
     response.write(caption.generate_srt_captions())
     return response
+
+
+def about_us(request):
+    return render(request, 'about-us.html')
+
+
+def faq(request):
+    return render(request, 'faq.html')
+
+
+def contact_us(request):
+    return render(request, 'contact-us.html')
+
+
+def terms_of_service(request):
+    return render(request, 'terms-of-service.html')
+
+
+def privacy_policy(request):
+    return render(request, 'privacy-policy.html')
+

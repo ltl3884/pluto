@@ -1,5 +1,51 @@
 <!DOCTYPE HTML>
 <html>
+<head>
+    <title>Youtube downloader. Download Youtube to mp4 or to mp3.</title>
+    <meta name="keywords" content="video downloader, online video downloader, download videos, mp4 downloader, mp3 downloader, download youtube videos, youtube video downloader, youtube downloader">
+    <meta name="description" content="findvideonow is online Youtube video downloader. Download Youtube videos to mp4 & mp3 files. Youtube video mp3 converter.">
+    <meta name="robots" content="all,index,follow">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="author" content="ltl3884@gmail.com">
+
+    <meta property="og:title" content="Video Downloader Online - Download videos from YouTube"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:url" content="https://www.findvideonow.com"/>
+        <meta property="og:image" content="https://www.findvideonow.com/static/img/favicon-large.png"/>
+    <meta property="og:image:width" content="260"/>
+    <meta property="og:image:height" content="260"/>
+    <meta property="og:site_name" content="findvideonow"/>
+    <meta property="og:description" content="findvideonow is online Youtube video downloader. Download Youtube videos to mp4 & mp3 files. Youtube video mp3 converter."/>
+
+    <script type='application/ld+json'>
+      {
+        "@context": "http://schema.org/",
+        "@type": "SoftwareApplication",
+        "applicationCategory": "BrowserApplication",
+        "operatingSystem":["Windows","macOS","Android","iOS"],
+        "alternativeHeadline": "findvideonow YouTube Downloader",
+        "copyrightYear": "2020",
+        "headline": "findvideonow",
+        "keywords": "findvideonow, youtube downloader, video downloader, save online video, download video from youtube",
+        "offers": {
+          "@type": "Offer",
+          "price": "0.0",
+          "priceCurrency": "USD",
+          "alternateName": "findvideonow",
+          "description": "findvideonow Downloader",
+          "mainEntityOfPage": "https://www.findvideonow.com",
+          "name": "findvideonow"
+        },
+        "alternateName": "findvideonow",
+        "mainEntityOfPage": "https://www.findvideonow.com",
+        "name": "findvideonow"
+      }
+
+    </script>
+</head>
+
+
 {% load static %}
 {% load bootstrap4 %}
 
@@ -11,63 +57,17 @@
 <body>
 
 {% include 'nav.html' %}
-<main role="main">
 
-    <!-- Main jumbotron for a primary marketing message or call to action -->
-    <div class="jumbotron">
-        <div class="container">
-            <div class="row">
-                <div class="col">
-                    <h5 class="text-left display-4">youtube downloader</h5>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <h5 class="text-left display-5">
-                        Download YouTube videos in any quality and formats
-                    </h5>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    {% if form.errors %}
-                        <div id="errors">
-                            <div class="inner">
-                                {{ form.non_field_errors }}
-                                <ul>
-                                    {% for field in form %}
-                                        {% if field.errors %}
-                                            <li>{{ field.errors|striptags }}</li>
-                                        {% endif %}
-                                    {% endfor %}
-                                </ul>
-                            </div>
-                        </div>
-                    {% endif %}
+{% if request.path == '/' or request.path == '/yt/download' %}
+    {% include 'main.html' %}
+{% endif %}
 
-                    <form action="/yt/download" method="post" class="form-inline">
-                        <div class="container">
-                            {% csrf_token %}
-                            <div class="row">
-                                <div class="col-8 input-group">
-                                    <div class="input-group-prepend">
-                                        <i class="fa fa-link fa-2x fa-fw" aria-hidden="true"></i>
-                                    </div>
-                                    <input type="text" name="url" class="form-control" placeholder="insert a valid url here" value="{{ url }}">
-                                </div>
-                                <div class="col-4 form-group">
-                                    <button class="btn btn-success" type="submit">start</button>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
 {% block content %}
 {% endblock %}
-{% include 'info.html' %}
+
+{% if request.path == '/' or request.path == '/yt/download' %}
+    {% include 'info.html' %}
+{% endif %}
 
 </main>
 

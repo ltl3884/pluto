@@ -26,7 +26,7 @@ SECRET_KEY = '_jl)98b7og-#ly5d2)wyb^glc@)z$(v#+2)&x5jwcr%@(ub4^4'
 if os.getenv('GAE_APPLICATION', None):
     DEBUG = False
 else:
-    DEBUG = True
+    DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 

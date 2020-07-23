@@ -1,0 +1,55 @@
+<main role="main">
+
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <h5 class="text-left display-4">youtube downloader</h5>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <h5 class="text-left display-5">
+                        Download YouTube videos in any quality and formats
+                    </h5>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    {% if form.errors %}
+                        <div id="errors">
+                            <div class="inner">
+                                {{ form.non_field_errors }}
+                                <ul>
+                                    {% for field in form %}
+                                        {% if field.errors %}
+                                            <li>{{ field.errors|striptags }}</li>
+                                        {% endif %}
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                    {% endif %}
+
+                    <form action="/yt/download" method="post" class="form-inline">
+                        <div class="container">
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="col-8 input-group">
+                                    <div class="input-group-prepend">
+                                        <i class="fa fa-link fa-2x fa-fw" aria-hidden="true"></i>
+                                    </div>
+                                    <input type="text" name="url" class="form-control"
+                                           placeholder="insert a valid url here" value="{{ url }}">
+                                </div>
+                                <div class="col-4 form-group">
+                                    <button class="btn btn-success" type="submit">start</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
