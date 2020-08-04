@@ -5,17 +5,17 @@
         <div class="container">
             <div class="row">
                 <div class="col">
-                    <h5 class="text-left display-4">youtube downloader</h5>
+                    <h5 class="text-left display-4"><span style="background:#f00; color:#FFF; padding:0 10px; border-radius:5px;">You</span>Tube Downloader</h5>
                 </div>
             </div>
             <div class="row">
                 <div class="col">
-                    <h5 class="text-left display-5">
+                    <h5 class="text-left display-5" style="color:#797979; font-weight:400;">
                         Download YouTube videos in any quality and formats
                     </h5>
                 </div>
             </div>
-            <div class="row">
+            <div class="row" style="margin-top:20px;">
                 <div class="col">
                     {% if form.errors %}
                         <div id="errors">
@@ -36,15 +36,15 @@
                         <div class="container">
                             {% csrf_token %}
                             <div class="row">
-                                <div class="col-8 input-group">
-                                    <div class="input-group-prepend">
-                                        <i class="fa fa-link fa-2x fa-fw" aria-hidden="true"></i>
-                                    </div>
+                                <div class="input-box input-group">
+<!--                                    <div class="input-group-prepend">-->
+<!--                                        <i class="fa fa-link fa-2x fa-fw" aria-hidden="true"></i>-->
+<!--                                    </div>-->
                                     <input type="text" name="url" class="form-control"
                                            placeholder="insert a valid url here" value="{{ url }}">
                                 </div>
-                                <div class="col-4 form-group">
-                                    <button class="btn btn-success" type="submit">start</button>
+                                <div>
+                                    <button class="btn" style="background:red; color:#FFF;" type="submit">Start</button>
                                 </div>
                             </div>
                         </div>
